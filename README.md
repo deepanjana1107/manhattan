@@ -1,4 +1,5 @@
-# manhattan
+# Manhattan Tourist Itinerary
+
 Open Source Geo Project Manhattan
 
 Authors: Franziska Blumenschein & Deepanjana Majumdar
