@@ -17,14 +17,14 @@ Authors: Franziska Blumenschein & Deepanjana Majumdar
 
 ## Client Side
 
-- ‘Manhattan’ => the JavaScript (JS) client application built in MVC style. It comprises the following important folders:
+‘Manhattan’ => the JavaScript (JS) client application built in MVC style. It comprises the following important folders:
 
--- app: stores the relevant model, view, controller files
--- library: stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files
--- resources: contain client application relevant non-JavaScript files such as images (of NYC), help files (map files) etc.
--- the php file (route_multiple.php) is contained in the manhattan/resources/php folder
+- app: stores the relevant model, view, controller files
+- library: stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files
+- resources: contain client application relevant non-JavaScript files such as images (of NYC), help files (map files) etc.
+- the php file (route_multiple.php) is contained in the manhattan/resources/php folder
 
-- Apache2 (HTTPD) webserver that hosts the ‘manhattan’ application client on http://localhost:80/ 
+Apache2 (HTTPD) webserver that hosts the ‘manhattan’ application client on http://localhost:80/ 
 
 ## How to load ‘Manhattan’ client application in Apache2
 
@@ -35,23 +35,23 @@ Authors: Franziska Blumenschein & Deepanjana Majumdar
 
 ## Preparing Data
 
-1. Getting data from weogeo market (http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region), here all needed layers are available
+- Getting data from weogeo market (http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region), here all needed layers are available
    Needed layers (as ESRI shapefile): highway (streets), leisure (parks), tourism (museums), buildings, amenity (theatres)
    
-2. Clip data to Manhattan boundaries
+- Clip data to Manhattan boundaries
 
-3. Clean up data, remove not needed attributes (necessary: ID, geom, name)
+- Clean up data, remove not needed attributes (necessary: ID, geom, name)
 
-4. Create the following layers: theatre_poly (theatre polygons), buildins_poly (important buildings polygon features), theatre (theatre point features), 
+- Create the following layers: theatre_poly (theatre polygons), buildins_poly (important buildings polygon features), theatre (theatre point features), 
    museums (museums point features), Manhattan_parks (park polygon features), museum_poly (museum polygon features)
    
-5. Modify the data, add the homepage and address columns and fill them manually
+- Modify the data, add the homepage and address columns and fill them manually
 
-6. Style your layers
+- Style your layers
 
-7. Add your layers to your PostGIS database
+- Add your layers to your PostGIS database
 
-8. Publish layers from the PostGIS database on Geoserver
+- Publish layers from the PostGIS database on Geoserver
 	- Create a workspace called "tour_manhattan"
 	- Create a store called "manhattan"
 	- Add the layers described under point 4
