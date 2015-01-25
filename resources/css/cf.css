@@ -1,0 +1,97 @@
+.cf-header {
+    background-color: #FFFFEA;
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 10px;
+    text-align: center;
+    text-shadow: 0 1px 0 #16191D;
+	height: 101px;
+}
+
+.cf-header  img{
+    display: block;    
+}
+
+.cf-header-logo {
+	position: absolute;
+	left: 5px;
+	top: 25px;	
+}
+
+.cf-helpwindow {
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+.cf-helpwindow div.cascade {
+    padding: 0 0 0 5px;
+}
+
+.cf-helpwindow h2 {
+    margin: 2px 0 0 0;
+}
+
+.dropzone {
+    padding: 40px 0px;
+    width: 200px;
+    background: #eee;
+	border: 5px dashed rgb(80,80,80);
+    color: #454545;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.x-poi-header {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+
+
+.x-poi-text {
+	font-family: helvetica,arial,verdana,sans-serif;
+	font-size: 12px;
+	text-align: left;
+	vertical-align: top;
+	
+	}
+
+.x-poi-img {
+	padding: 10px;
+	text-align: center;
+	width: 148px;
+}	
+
+.x-poi-img a span {display:none;}
+.x-poi-img a:hover span {position:fixed; top:200px; left: 40%; z-index:99;display:block; box-shadow:8px 8px 8px #666; }
+
+.x-edt-img {
+	padding: 10px;
+	text-align: center;
+	width: 148px;
+}	
+
+.x-edt-img a span {display:none;}
+.x-edt-img a:hover span {position:fixed; top:200px; left: 60%; z-index:99;display:block; box-shadow:8px 8px 8px #666;}
+
+.drop-poi {
+    border: 5px dashed rgb(80,80,80);
+    color: #454545;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+	line-height: 45px;
+	vertical-align: middle;
+}
+
+.drop-poi:hover {
+	border-color: #ED9200;
+}
+
+.glyph-btn-big .x-btn-glyph {
+	font-size: 24px;
+	line-height: 24px;
+
+}
+
+

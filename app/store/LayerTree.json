@@ -1,0 +1,25 @@
+{
+    "root": {
+        "expanded": true,
+        "children": [
+            {
+                "plugins": [
+                    {
+                        "ptype": "gx_layercontainer",
+                        "defaultText": "Base Layer",
+                        "loader": {
+                            "filter": function(record){
+                                return record.getLayer().background===true;
+                            },
+                            "createNode": function(attr){
+                                attr.checkedGroup="background";
+								return GeoExt.tree.LayerLoader.prototype.createNode.call(this, attr);
+                            }
+                        }
+                    }
+                ],
+                "expanded": true
+            }
+        ]
+    }
+}
