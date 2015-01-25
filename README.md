@@ -4,6 +4,13 @@ The Manhattan client has been created in GeoExt’s MVC (Model-View-Controller) 
 
 Authors: Franziska Blumenschein & Deepanjana Majumdar
 
+## How to load ‘Manhattan’ client application in Apache2
+
+- Clone this repository into your local repo
+- Copy the ‘Manhattan’ folder in /var/www/html folder
+- Then the index.html file will be visible in the browser http://localhost:80/manhattan/ (localhost/manhattan as shortcut)
+- One can create more advanced/virtual sites by editing /etc/apache2/conf-available folder by creating a new configuration
+
 ## Server Side
 
 - PostgreSQL database hosting different tables that store geometry data (‘features’) corresponding to the different ‘layers’ that are displayed in the ‘manhattan’ client
@@ -14,24 +21,6 @@ Authors: Franziska Blumenschein & Deepanjana Majumdar
 
 - a php file (routing_multiple.php) which acts as proxy between ‘manhattan’ and ‘ways
  table in PostgreSQL
-
-## Client Side
-
-‘Manhattan’ => the JavaScript (JS) client application built in MVC style. It comprises the following important folders:
-
-- app: stores the relevant model, view, controller files
-- library: stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files
-- resources: contain client application relevant non-JavaScript files such as images (of NYC), help files (map files) etc.
-- the php file (route_multiple.php) is contained in the manhattan/resources/php folder
-
-Apache2 (HTTPD) webserver that hosts the ‘manhattan’ application client on http://localhost:80/ 
-
-## How to load ‘Manhattan’ client application in Apache2
-
-- Clone this repository into your local repo
-- Copy the ‘Manhattan’ folder in /var/www/html folder
-- Then the index.html file will be visible in the browser http://localhost:80/manhattan/ (localhost/manhattan as shortcut)
-- One can create more advanced/virtual sites by editing /etc/apache2/conf-available folder by creating a new configuration
 
 ## Preparing Data
 
@@ -95,3 +84,14 @@ http://workshop.pgrouting.org/chapters/php_server.html
   
 After following this instructions the network topology is implemented and together with the published layers on geoserver and the provided codes the application 
 should work.
+
+## Client Side
+
+‘Manhattan’ => the JavaScript (JS) client application built in MVC style. It comprises the following important folders:
+
+- app: stores the relevant model, view, controller files
+- library: stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files
+- resources: contain client application relevant non-JavaScript files such as images (of NYC), help files (map files) etc.
+- the php file (route_multiple.php) is contained in the manhattan/resources/php folder
+
+Apache2 (HTTPD) webserver that hosts the ‘manhattan’ application client on http://localhost:80/ 
