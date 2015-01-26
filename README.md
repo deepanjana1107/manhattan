@@ -45,6 +45,8 @@ Authors: Franziska Blumenschein & Deepanjana Majumdar
 	- Create a store called "manhattan"
 	- Add the layers described under point 4
 
+Otherwise the database dump (database_dump.sql), which is also used as a backup, is containing all needed layers. It gives the opportunity to recreate the complete database within a SQL query, so the user only needs to publish these database tables.
+
 ## PgRouting
 
 In order to provide the user a routing functionality the following steps need to be done. For further questions the FOSS4G workshop "Routing with pgRouting" provides
@@ -71,8 +73,8 @@ http://workshop.pgrouting.org/chapters/php_server.html
 	  This step is necessary to create junctions wherever streets will intersect. Otherwise streets will only intersect in the start and end point.
 	  
 	- Add new columns to the attribute table: -> gid (=$id)
-											  -> length (=$length)
-											  -> the_geom (=$geom)
+						  -> length (=$length)
+						  -> the_geom (=$geom)
 	
     - Use QGIS DB Manager to add .shp-file layer as table "ways" to the PostGIS database. Choose target SRID 4326, create a spatial index, create single-part geometries 
 	  instead of multi-part and the_geom as the geometry column
