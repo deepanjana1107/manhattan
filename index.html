@@ -31,44 +31,80 @@
           <h1>
 <a id="manhattan-tourist-itinerary" class="anchor" href="#manhattan-tourist-itinerary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manhattan Tourist Itinerary</h1>
 
-<p>The Manhattan client has been created in GeoExt’s MVC (Model-View-Controller) programming style.</p>
+<p>The Manhattan Tourist Itinerary project (called 'Manhattan' in short) has been created in ExtJS’ MVC (Model-View-Controller) programming style. It is built with the following components.</p>
+
+<ul>
+<li>Server Side
+
+<ul>
+<li>PostGIS 2.1 with PostgreSQL 9.3 with pgRouting 2</li>
+<li>GeoServer 2.5</li>
+<li>PHP </li>
+</ul>
+</li>
+<li>
+<p>Client Side</p>
+
+<ul>
+<li>OpenLayers 2.13.1</li>
+<li>GeoExt 2.0.2</li>
+<li>ExtJS 4.2</li>
+</ul>
+</li>
+<li>
+<p>Folder Structure</p>
+
+<ul>
+<li>'app': stores the relevant model, view, controller files. For the 'Manhattan' application, no model is used</li>
+<li>'library': stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files</li>
+<li>'resources': contains client application relevant non-JavaScript files such as images (of manhattan), map help, navigation help, etc.
+
+<ul>
+<li>A PHP file (route_multiple.php) inside the resources folder is used by the application to access pgRouting</li>
+</ul>
+</li>
+<li>'database': contains two database dump files which can be used to set up the database </li>
+</ul>
+</li>
+</ul>
 
 <p>Authors: Franziska Blumenschein &amp; Deepanjana Majumdar</p>
 
 <h2>
-<a id="how-to-load-manhattan-client-application-in-apache2" class="anchor" href="#how-to-load-manhattan-client-application-in-apache2" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to load ‘Manhattan’ client application in Apache2</h2>
+<a id="how-to-load-manhattan-client-application-in-apache-httpd-web-server" class="anchor" href="#how-to-load-manhattan-client-application-in-apache-httpd-web-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to load ‘Manhattan’ client application in Apache httpd web server</h2>
 
 <ul>
-<li>Clone this repository into your local repo</li>
-<li>Copy the ‘Manhattan’ folder in /var/www/html folder</li>
-<li>Then the index.html file will be visible in the browser http://localhost:80/manhattan/ (localhost/manhattan as shortcut)</li>
-<li>One can create more advanced/virtual sites by editing /etc/apache2/conf-available folder by creating a new configuration</li>
+<li>The application has been tested with Apache httpd 2.4.7</li>
+<li>Clone this repository into your local folder (say, 'Manhattan')</li>
+<li>Copy the ‘Manhattan’ folder in /var/www/html folder of OSGeo-Live</li>
+<li>The index.html within 'Manhattan' will be visible in the browser at location http://localhost:80/manhattan/ (localhost/manhattan as shortcut)</li>
+<li>If you want to create more advanced or virtual locations, then create a new configuration in /etc/apache2/conf-available folder</li>
 </ul>
 
 <h2>
-<a id="server-side" class="anchor" href="#server-side" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Side</h2>
+<a id="setting-up-the-server-side" class="anchor" href="#setting-up-the-server-side" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up the Server Side</h2>
+
+<p>If you are using OSGeo Live, then the following components are already enabled for you. If not, please set these up individually.</p>
 
 <ul>
-<li><p>PostgreSQL database hosting different tables that store geometry data (‘features’) corresponding to the different ‘layers’ that are displayed in the ‘manhattan’ client</p></li>
-<li><p>pgRouting extension that has been added (by default) to PostgreSQL database. The ‘ways’ table is pgRouting geometry (the_geom) enabled which is returned to the client application (‘manhattan’) via PHP</p></li>
-<li><p>GeoServer is the WMS service provider. It exposes the different PostgreSQL tables to the ‘manhattan’ application via webservice calls via http://localhost:8082</p></li>
-<li><p>a php file (routing_multiple.php) which acts as proxy between ‘manhattan’ and ‘ways
-table in PostgreSQL</p></li>
+<li><p>A PostgreSQL database containing different tables that store geometry data (‘features’) corresponding to the different ‘layers’ are displayed in the ‘Manhattan’ client</p></li>
+<li><p>pgRouting extension has been added (by default) to PostgreSQL database. The ‘ways’ table is pgRouting geometry (the_geom) enabled which is returned to the client application (‘Manhattan’) via PHP</p></li>
+<li><p>GeoServer is the WMS service provider. It exposes the different PostgreSQL tables to the ‘Manhattan’ application via WMS calls (in OSGeo Live via http://localhost:8082)</p></li>
 </ul>
 
 <h2>
-<a id="preparing-data" class="anchor" href="#preparing-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparing Data</h2>
+<a id="steps-in-preparing-the-data" class="anchor" href="#steps-in-preparing-the-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps in Preparing the Data</h2>
 
 <ul>
-<li><p>Getting data from weogeo market (<a href="http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region">http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region</a>), here all needed layers are available
+<li><p>Get data from weogeo market (<a href="http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region">http://market.weogeo.com/datasets/osm-openstreetmap-new-york-ny-metro-region</a>), here all needed layers are available
 Needed layers (as ESRI shapefile): highway (streets), leisure (parks), tourism (museums), buildings, amenity (theatres)</p></li>
 <li><p>Clip data to Manhattan boundaries</p></li>
-<li><p>Clean up data, remove not needed attributes (necessary: ID, geom, name)</p></li>
+<li><p>Clean up data, remove unnecessary attributes (necessary: ID, geom, name)</p></li>
 <li><p>Create the following layers: theatre_poly (theatre polygons), buildins_poly (important buildings polygon features), theatre (theatre point features), 
 museums (museums point features), Manhattan_parks (park polygon features), museum_poly (museum polygon features)</p></li>
-<li><p>Modify the data, add the homepage and address columns and fill them manually</p></li>
-<li><p>Style your layers</p></li>
-<li><p>Add your layers to your PostGIS database</p></li>
+<li><p>Modify the data, add the homepage and address columns and fill them manually either via pgAdmin or QGIS</p></li>
+<li><p>Style layers in QGIS and store them as .sld files</p></li>
+<li><p>Add layers to your PostGIS database</p></li>
 <li>
 <p>Publish layers from the PostGIS database on Geoserver</p>
 
@@ -76,17 +112,22 @@ museums (museums point features), Manhattan_parks (park polygon features), museu
 <li>Create a workspace called "tour_manhattan"</li>
 <li>Create a store called "manhattan"</li>
 <li>Add the layers described under point 4</li>
+<li>Load the .sld files under style in GeoServer</li>
 </ul>
 </li>
 </ul>
 
+<p>Otherwise the database dump (database_dump.sql), which is also used as a backup, is containing all needed layers. It gives the opportunity to recreate the complete database within a SQL query, so the user only needs to publish these database tables.</p>
+
 <h2>
 <a id="pgrouting" class="anchor" href="#pgrouting" aria-hidden="true"><span class="octicon octicon-link"></span></a>PgRouting</h2>
 
-<p>In order to provide the user a routing functionality the following steps need to be done. For further questions the FOSS4G workshop "Routing with pgRouting" provides
-further information.
-<a href="http://download.osgeo.org/pgrouting/foss4g2010/workshop/docs/pgRoutingWorkshop.pdf">http://download.osgeo.org/pgrouting/foss4g2010/workshop/docs/pgRoutingWorkshop.pdf</a>
-<a href="http://workshop.pgrouting.org/chapters/php_server.html">http://workshop.pgrouting.org/chapters/php_server.html</a></p>
+<p>In order to provide the user a routing functionality the following steps need to be done. For further questions the FOSS4G workshop "Routing with pgRouting" provides further information.</p>
+
+<ul>
+<li><a href="http://download.osgeo.org/pgrouting/foss4g2010/workshop/docs/pgRoutingWorkshop.pdf">http://download.osgeo.org/pgrouting/foss4g2010/workshop/docs/pgRoutingWorkshop.pdf</a></li>
+<li><a href="http://workshop.pgrouting.org/chapters/php_server.html">http://workshop.pgrouting.org/chapters/php_server.html</a></li>
+</ul>
 
 <ul>
 <li><p>Create database "routing" in PostgreSQL </p></li>
@@ -107,33 +148,17 @@ further information.
 <li><p>Explode lines (f.e. with QGIS Processing Toolbox: Geoalgorithms -&gt; Vector geom tools -&gt; Explode lines. 
 This step is necessary to create junctions wherever streets will intersect. Otherwise streets will only intersect in the start and end point.</p></li>
 <li><p>Add new columns to the attribute table: -&gt; gid (=$id)
-                                      -&gt; length (=$length)
-                                      -&gt; the_geom (=$geom)</p></li>
+                  -&gt; length (=$length)
+                  -&gt; the_geom (=$geom)</p></li>
 <li><p>Use QGIS DB Manager to add .shp-file layer as table "ways" to the PostGIS database. Choose target SRID 4326, create a spatial index, create single-part geometries 
 instead of multi-part and the_geom as the geometry column</p></li>
 <li><p>Run query "UPDATE ways SET the_geom = ST_Force_2D(geom)"</p></li>
 </ul>
 </li>
-<li><p>Follow the further instructions in the PgRouting workshop from FOSS4G (<a href="http://workshop.pgrouting.org/chapters/topology.html">http://workshop.pgrouting.org/chapters/topology.html</a>) with chapter 4 (Create a Network Topology)
-and chapter 5 (PgRouting Algorithms)</p></li>
+<li><p>Follow the further instructions in the PgRouting workshop from FOSS4G (<a href="http://workshop.pgrouting.org/chapters/topology.html">http://workshop.pgrouting.org/chapters/topology.html</a>) with chapter 4 (Create a Network Topology) and chapter 5 (PgRouting Algorithms)</p></li>
 </ul>
 
-<p>After following this instructions the network topology is implemented and together with the published layers on geoserver and the provided codes the application 
-should work.</p>
-
-<h2>
-<a id="client-side" class="anchor" href="#client-side" aria-hidden="true"><span class="octicon octicon-link"></span></a>Client Side</h2>
-
-<p>‘Manhattan’ =&gt; the JavaScript (JS) client application built in MVC style. It comprises the following important folders:</p>
-
-<ul>
-<li>app: stores the relevant model, view, controller files</li>
-<li>library: stores the relevant OpenLayers 2, GeoExt 2, and Ext.JS library files</li>
-<li>resources: contain client application relevant non-JavaScript files such as images (of NYC), help files (map files) etc.</li>
-<li>the php file (route_multiple.php) is contained in the manhattan/resources/php folder</li>
-</ul>
-
-<p>Apache2 (HTTPD) webserver that hosts the ‘manhattan’ application client on http://localhost:80/ </p>
+<p>After following this instructions the network topology is implemented and together with the published layers on geoserver and the provided codes the application should work.</p>
         </section>
 
         <aside id="sidebar">
