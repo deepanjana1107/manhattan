@@ -22,7 +22,8 @@ var lmMapPanel = Ext.create('GeoExt.panel.Map', {
 			new OpenLayers.Control.Navigation({dragPanOptions: {enableKinetic: true}}),
 			new OpenLayers.Control.Zoom(),
 			new OpenLayers.Control.MousePosition({prefix: '<a target="_blank" ' +'href="http://wiki.openstreetmap.org/wiki/EPSG:3857">' +'EPSG:3857</a>: '}),
-			new OpenLayers.Control.ScaleLine()	
+			new OpenLayers.Control.ScaleLine(),
+			new OpenLayers.Control.Attribution()	
 		]
 	},
 	center: new OpenLayers.LonLat(-74.011047, 40.708009).transform('EPSG:4326','EPSG:3857'),
