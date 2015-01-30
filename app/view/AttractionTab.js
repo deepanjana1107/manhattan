@@ -14,7 +14,8 @@ var attractionMapPanel = Ext.create('GeoExt.panel.Map', {
 			new OpenLayers.Control.Zoom(),
 			new OpenLayers.Control.MousePosition({prefix: '<a target="_blank" '+'href="http://wiki.openstreetmap.org/wiki/EPSG:3857">' +'EPSG:3857</a>: '}),
 			new OpenLayers.Control.ScaleLine(),
-			new OpenLayers.Control.Attribution()	
+			new OpenLayers.Control.Attribution()
+
 		]
 	},
 	center: new OpenLayers.LonLat(-73.996417, 40.729338).transform('EPSG:4326','EPSG:3857'), // pan the map to its center (transform coordinates from 4326 to 3857)
@@ -25,12 +26,14 @@ var attractionMapPanel = Ext.create('GeoExt.panel.Map', {
                     "http://otile2.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
                     "http://otile3.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
                     "http://otile4.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg"],
+                    {attribution: "© <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. Tiles Courtesy of <a href='http://www.mapquest.com/'>MapQuest</a> <img src='http://developer.mapquest.com/content/osm/mq_logo.png'>" },
                     {isBaseLayer:true, visibility:true}),
 		new OpenLayers.Layer.OSM("MapQuest Aerial Tiles", // Second Baselayer - not default. isBaseLayer: true adds layer to Tree 'baselayer' container
 					["http://otile1.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
 		             "http://otile2.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
 		             "http://otile3.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
 		             "http://otile4.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg"],
+		             {attribution: "© <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> and contributors, under an <a href='http://www.openstreetmap.org/copyright' title='ODbL'>open license</a>. Tiles Courtesy of <a href='http://www.mapquest.com/'>MapQuest</a> <img src='http://developer.mapquest.com/content/osm/mq_logo.png'>" },
 		            {isBaseLayer: true,
 		            visibility: false}),
 		new OpenLayers.Layer.OSM("OpenStreetMap", // Third Baselayer - not default. isBaseLayer: true adds layer to Tree 'baselayer' container
