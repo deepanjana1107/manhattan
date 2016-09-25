@@ -1,6 +1,6 @@
 # Manhattan Tourist Itinerary
 
-The Manhattan Tourist Itinerary project (called 'Manhattan' in short) has been created in ExtJS’ MVC (Model-View-Controller) programming style. It is built with the following components.
+The NYC Manhattan Tourist Itinerary project (called 'Manhattan' in short) has been created in ExtJS’ MVC (Model-View-Controller) programming style. It is built with the following components.
 
 - Server Side
 	- PostGIS 2.1 with PostgreSQL 9.3 with pgRouting 2
